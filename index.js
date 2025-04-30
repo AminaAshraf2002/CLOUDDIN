@@ -1,4 +1,3 @@
-// File: index.js
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -7,8 +6,8 @@ const path = require('path');
 const adminRoutes = require('./routes/adminRoutes');
 const userRoutes = require('./routes/userRoutes');
 const courseRoutes = require('./routes/courseRoutes');
-
-
+const subcategoryRoutes = require('./routes/subcategoryRoutes'); 
+const lessonRoutes = require('./routes/lessonRoutes'); 
 
 const cloudInDB = express();
 
@@ -32,9 +31,10 @@ cloudInDB.use(express.static('public'));
 
 // Routes
 cloudInDB.use('/api/admin', adminRoutes);
-// Add this line near your other routes
 cloudInDB.use('/api/users', userRoutes);
-cloudInDB.use('/api/course', courseRoutes); // New course routes
+cloudInDB.use('/api/course', courseRoutes); 
+cloudInDB.use('/api/subcategories', subcategoryRoutes); 
+cloudInDB.use('/api/lessons', lessonRoutes); 
 
 // Serve admin login page
 cloudInDB.get('/admin', (req, res) => {
